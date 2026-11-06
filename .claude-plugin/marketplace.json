@@ -1,0 +1,15 @@
+{
+	"name": "claude-mods",
+	"description": "A personal collection of mods for Claude Code.",
+	"owner": {
+		"name": "Éwerton Ferreira",
+		"url": "https://github.com/thewerthon"
+	},
+	"plugins": [
+		{
+			"name": "status-bar",
+			"source": "./status-bar",
+			"description": "Enhances Claude Code's status bar with a clickable, configurable view of the session: folder, branch, model, effort, context and usage limits."
+		}
+	]
+}

@@ -1,0 +1,148 @@
+{
+	"name": "status-bar",
+	"version": "1.0.0",
+	"description": "Enhances Claude Code's status bar with a clickable, configurable view of the session: folder, branch, model, effort, context and usage limits.",
+	"author": {
+		"name": "Éwerton Ferreira",
+		"url": "https://github.com/thewerthon"
+	},
+	"homepage": "https://github.com/thewerthon/ClaudeMods/tree/main/status-bar",
+	"repository": "https://github.com/thewerthon/ClaudeMods",
+	"types": "./types/index.d.ts",
+	"userConfig": {
+		"showLocation": {
+			"type": "boolean",
+			"title": "Show folder and branch",
+			"description": "Show the current folder and git branch on the left of the row.",
+			"default": true
+		},
+		"showModel": {
+			"type": "boolean",
+			"title": "Show model",
+			"description": "Show the current model on the right of the row.",
+			"default": true
+		},
+		"showEffort": {
+			"type": "boolean",
+			"title": "Show effort",
+			"description": "Show the reasoning effort next to the model.",
+			"default": true
+		},
+		"showContext": {
+			"type": "boolean",
+			"title": "Show context",
+			"description": "Show how much of the context window is used.",
+			"default": true
+		},
+		"showUsage": {
+			"type": "boolean",
+			"title": "Show usage limits",
+			"description": "Show the 5-hour and 7-day usage limit windows.",
+			"default": true
+		},
+		"showContextBar": {
+			"type": "boolean",
+			"title": "Show context bar",
+			"description": "Draw a bar next to the context percentage in the row.",
+			"default": false
+		},
+		"showUsageBars": {
+			"type": "boolean",
+			"title": "Show usage bars",
+			"description": "Draw a bar next to each usage limit percentage in the row.",
+			"default": false
+		},
+		"showContextLabel": {
+			"type": "boolean",
+			"title": "Show context label",
+			"description": "Lead the context figure with the word Context.",
+			"default": false
+		},
+		"showUsageLabel": {
+			"type": "boolean",
+			"title": "Show usage label",
+			"description": "Lead the usage limit figures with the word Usage.",
+			"default": false
+		},
+		"contextWarningPercent": {
+			"type": "number",
+			"title": "Context warning threshold",
+			"description": "Context percentage from which the warning color is used.",
+			"default": 50,
+			"min": 0,
+			"max": 100
+		},
+		"contextCriticalPercent": {
+			"type": "number",
+			"title": "Context critical threshold",
+			"description": "Context percentage from which the critical color is used.",
+			"default": 80,
+			"min": 0,
+			"max": 100
+		},
+		"usageWarningPercent": {
+			"type": "number",
+			"title": "Usage warning threshold",
+			"description": "Usage limit percentage from which the warning color is used.",
+			"default": 50,
+			"min": 0,
+			"max": 100
+		},
+		"usageCriticalPercent": {
+			"type": "number",
+			"title": "Usage critical threshold",
+			"description": "Usage limit percentage from which the critical color is used.",
+			"default": 80,
+			"min": 0,
+			"max": 100
+		},
+		"pathColor": {
+			"type": "string",
+			"title": "Folder color",
+			"description": "Color of the folder path, as a hex value or a color name.",
+			"default": "#4AA5F0"
+		},
+		"branchColor": {
+			"type": "string",
+			"title": "Branch color",
+			"description": "Color of the git branch, as a hex value or a color name.",
+			"default": "#D18F52"
+		},
+		"modelColor": {
+			"type": "string",
+			"title": "Model color",
+			"description": "Color of the model name, as a hex value or a color name.",
+			"default": "#42B3C2"
+		},
+		"effortColor": {
+			"type": "string",
+			"title": "Effort color",
+			"description": "Color of the reasoning effort, as a hex value or a color name.",
+			"default": "#C162DE"
+		},
+		"mutedColor": {
+			"type": "string",
+			"title": "Muted color",
+			"description": "Color of secondary details, such as token counts and reset times, as a hex value or a color name.",
+			"default": "#5C6370"
+		},
+		"normalColor": {
+			"type": "string",
+			"title": "Normal level color",
+			"description": "Color of a figure below its warning threshold, as a hex value or a color name.",
+			"default": "#8CC265"
+		},
+		"warningColor": {
+			"type": "string",
+			"title": "Warning level color",
+			"description": "Color of a figure between its warning and critical thresholds, as a hex value or a color name.",
+			"default": "#D18F52"
+		},
+		"criticalColor": {
+			"type": "string",
+			"title": "Critical level color",
+			"description": "Color of a figure at or above its critical threshold, as a hex value or a color name.",
+			"default": "#E05561"
+		}
+	}
+}
