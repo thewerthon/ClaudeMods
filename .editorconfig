@@ -1,0 +1,35 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{json,jsonc}]
+indent_size = 2
+indent_style = tab
+insert_final_newline = false
+
+[*.{md,mdx}]
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+
+[*.{ps1,psm1,psd1}]
+charset = utf-8-bom
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+
+[*.{ts,tsx,js}]
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+
+[*.{yml,yaml}]
+indent_size = 2
+indent_style = space
+insert_final_newline = true

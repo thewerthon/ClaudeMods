@@ -1,0 +1,14 @@
+# Text Files
+* text=auto eol=lf
+
+# Binaries Files
+*.png binary
+
+# Linguist Detectable
+* -linguist-detectable
+*.psm1 linguist-detectable
+*.ts linguist-detectable
+*.tsx linguist-detectable
+
+# Linguist Documentation
+*.md linguist-documentation
