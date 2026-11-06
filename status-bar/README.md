@@ -41,11 +41,11 @@ Options are set when installing and later under `/config`. Colors take a hex val
 | `showContextLabel`, `showUsageLabel` | `false` | Lead the context and the usage figures with `Context` and `Usage`. |
 | `contextWarningPercent`, `contextCriticalPercent` | `50`, `80` | Context levels at which the warning and critical colors apply. |
 | `usageWarningPercent`, `usageCriticalPercent` | `50`, `80` | Usage limit levels at which the warning and critical colors apply. |
-| `pathColor`, `branchColor`, `modelColor`, `effortColor`, `mutedColor` | `#4AA5F0`, `#D18F52`, `#42B3C2`, `#C162DE`, `#5C6370` | Colors of the folder, branch, model, effort and secondary details. |
-| `normalColor`, `warningColor`, `criticalColor` | `#8CC265`, `#D18F52`, `#E05561` | Colors of a figure below, between and above its thresholds. |
+| `pathColor`, `branchColor`, `modelColor`, `effortColor`, `mutedColor` | `blue`, `yellow`, `cyan`, `magenta`, `gray` | Colors of the folder, branch, model, effort and secondary details. |
+| `normalColor`, `warningColor`, `criticalColor` | `green`, `yellow`, `red` | Colors of a figure below, between and above its thresholds. |
 
 > [!TIP]
-> Claude Code paints named colors as fixed RGB values rather than the terminal's palette, so matching a terminal theme means copying its hex values into the color options.
+> Claude Code paints color names as fixed RGB values rather than the terminal's palette, so matching a terminal theme means setting its hex values in the color options, for example with `/plugin configure status-bar@claude-mods`.
 
 ## Limitations
 

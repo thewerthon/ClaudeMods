@@ -106,49 +106,49 @@
 			"type": "string",
 			"title": "Folder color",
 			"description": "Color of the folder path, as a hex value or a color name.",
-			"default": "#4AA5F0"
+			"default": "blue"
 		},
 		"branchColor": {
 			"type": "string",
 			"title": "Branch color",
 			"description": "Color of the git branch, as a hex value or a color name.",
-			"default": "#D18F52"
+			"default": "yellow"
 		},
 		"modelColor": {
 			"type": "string",
 			"title": "Model color",
 			"description": "Color of the model name, as a hex value or a color name.",
-			"default": "#42B3C2"
+			"default": "cyan"
 		},
 		"effortColor": {
 			"type": "string",
 			"title": "Effort color",
 			"description": "Color of the reasoning effort, as a hex value or a color name.",
-			"default": "#C162DE"
+			"default": "magenta"
 		},
 		"mutedColor": {
 			"type": "string",
 			"title": "Muted color",
 			"description": "Color of secondary details, such as token counts and reset times, as a hex value or a color name.",
-			"default": "#5C6370"
+			"default": "gray"
 		},
 		"normalColor": {
 			"type": "string",
 			"title": "Normal level color",
 			"description": "Color of a figure below its warning threshold, as a hex value or a color name.",
-			"default": "#8CC265"
+			"default": "green"
 		},
 		"warningColor": {
 			"type": "string",
 			"title": "Warning level color",
 			"description": "Color of a figure between its warning and critical thresholds, as a hex value or a color name.",
-			"default": "#D18F52"
+			"default": "yellow"
 		},
 		"criticalColor": {
 			"type": "string",
 			"title": "Critical level color",
 			"description": "Color of a figure at or above its critical threshold, as a hex value or a color name.",
-			"default": "#E05561"
+			"default": "red"
 		}
 	}
 }
