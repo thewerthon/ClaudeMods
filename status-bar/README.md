@@ -36,7 +36,7 @@ Options are set when installing and later under `/config`. Colors take a hex val
 
 | Option | Default | Description |
 | ------ | ------- | ----------- |
-| `showLocation`, `showModel`, `showEffort`, `showContext`, `showUsage` | `true` | Show each element of the row. |
+| `showFolder`, `showBranch`, `showModel`, `showEffort`, `showContext`, `showUsage` | `true` | Show each element of the row. |
 | `showContextBar`, `showUsageBars` | `false` | Draw a bar next to the context and the usage percentages. |
 | `showContextLabel`, `showUsageLabel` | `false` | Lead the context and the usage figures with `Context` and `Usage`. |
 | `contextWarningPercent`, `contextCriticalPercent` | `50`, `80` | Context levels at which the warning and critical colors apply. |

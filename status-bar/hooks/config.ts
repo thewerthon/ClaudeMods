@@ -3,7 +3,8 @@ import type { PluginOptions } from "claude-code";
 /** Which elements the row shows. */
 export interface StatusBarVisibility {
 
-	location: boolean;
+	folder: boolean;
+	branch: boolean;
 	model: boolean;
 	effort: boolean;
 	context: boolean;
@@ -65,7 +66,8 @@ export function readConfig(options: PluginOptions): StatusBarConfig {
 
 	return {
 		visibility: {
-			location: readFlag(options, "showLocation", true),
+			folder: readFlag(options, "showFolder", true),
+			branch: readFlag(options, "showBranch", true),
 			model: readFlag(options, "showModel", true),
 			effort: readFlag(options, "showEffort", true),
 			context: readFlag(options, "showContext", true),

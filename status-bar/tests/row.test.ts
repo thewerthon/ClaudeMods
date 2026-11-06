@@ -172,9 +172,21 @@ test("the effort can show without the model", async () => {
 
 });
 
-test("a hidden location leaves the right side alone", async () => {
+test("a hidden folder and branch leave the right side alone", async () => {
 
-	expect(layoutText({ showLocation: false }).startsWith(" ".repeat(minimumGap))).toBe(true);
+	expect(layoutText({ showFolder: false, showBranch: false }).startsWith(" ".repeat(minimumGap))).toBe(true);
+
+});
+
+test("the branch can show without the folder", async () => {
+
+	expect(layoutText({ showFolder: false }).startsWith("main  ")).toBe(true);
+
+});
+
+test("the folder can show without the branch", async () => {
+
+	expect(layoutText({ showBranch: false })).toMatch(/Quux {2}Foo/);
 
 });
 

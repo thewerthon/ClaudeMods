@@ -137,26 +137,33 @@ function describeRow(input: RowInput, detail: RowDetail): RowLayout {
 	].filter(segment => segment.length > 0);
 
 	return {
-		left: visibility.location ? [describeLocation(input, detail)] : [],
+		left: describeLocation(input, detail),
 		right: segments.flatMap((segment, index) => (index === 0 ? segment : [separatorGroup(), ...segment])),
 	};
 
 }
 
-function describeLocation({ snapshot, config }: RowInput, detail: RowDetail): RowGroup {
+function describeLocation({ snapshot, config }: RowInput, detail: RowDetail): RowGroup[] {
 
-	const path = formatDisplayPath(snapshot.directory, snapshot.homeDirectory);
-	const shownPath = detail.pathLimit === null ? path : elidePath(path, detail.pathLimit);
-	const parts: RowPart[] = [{ text: shownPath, color: config.colors.path }];
+	const { visibility, colors } = config;
+	const parts: RowPart[] = [];
 
-	if (snapshot.headName) {
+	if (visibility.folder) {
 
-		parts.push({ text: branchSeparator, color: config.colors.muted });
-		parts.push({ text: snapshot.headName, color: config.colors.branch });
+		const path = formatDisplayPath(snapshot.directory, snapshot.homeDirectory);
+
+		parts.push({ text: detail.pathLimit === null ? path : elidePath(path, detail.pathLimit), color: colors.path });
 
 	}
 
-	return { action: "directory", parts };
+	if (visibility.branch && snapshot.headName) {
+
+		if (parts.length > 0) parts.push({ text: branchSeparator, color: colors.muted });
+		parts.push({ text: snapshot.headName, color: colors.branch });
+
+	}
+
+	return parts.length > 0 ? [{ action: "directory", parts }] : [];
 
 }
 

@@ -10,10 +10,16 @@
 	"repository": "https://github.com/thewerthon/ClaudeMods",
 	"types": "./types/index.d.ts",
 	"userConfig": {
-		"showLocation": {
+		"showFolder": {
 			"type": "boolean",
-			"title": "Show folder and branch",
-			"description": "Show the current folder and git branch on the left of the row.",
+			"title": "Show folder",
+			"description": "Show the current folder on the left of the row.",
+			"default": true
+		},
+		"showBranch": {
+			"type": "boolean",
+			"title": "Show branch",
+			"description": "Show the current git branch next to the folder.",
 			"default": true
 		},
 		"showModel": {
