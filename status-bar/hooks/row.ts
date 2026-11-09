@@ -2,7 +2,7 @@ import type { StatusBarRateLimit, StatusBarSnapshot } from "../types";
 import { getThresholdColor } from "./config";
 import type { StatusBarConfig } from "./config";
 import { formatDisplayPath, formatModelName, formatProgressBar, formatResetTime, formatTokenCount } from "./format";
-import { isMultiDayLimit, limitLabels } from "./limits";
+import { isMultiDayLimit, limitKinds, limitLabels } from "./limits";
 import { resolveEffort } from "./snapshot";
 
 /** One run of text in the status row, painted in one style. */
@@ -40,6 +40,14 @@ export interface RowInput {
 	snapshot: StatusBarSnapshot;
 	effort: string | null;
 	config: StatusBarConfig;
+
+}
+
+/** How the configuration shows one usage limit window. */
+interface UsageDisplay {
+
+	shown: boolean;
+	bar: boolean;
 
 }
 
@@ -134,7 +142,7 @@ function describeRow(input: RowInput, detail: RowDetail): RowLayout {
 	const segments = [
 		visibility.model || visibility.effort ? describeModel(input) : [],
 		visibility.context ? describeContext(input, detail) : [],
-		visibility.usage ? describeRateLimits(input, detail) : [],
+		describeRateLimits(input, detail),
 	].filter(segment => segment.length > 0);
 
 	return {
@@ -216,14 +224,14 @@ function describeContext({ snapshot, config }: RowInput, detail: RowDetail): Row
 
 function describeRateLimits({ snapshot, config }: RowInput, detail: RowDetail): RowGroup[] {
 
-	const knownLimits = snapshot.rateLimits.filter(limit => Object.hasOwn(limitLabels, limit.kind));
+	const shownLimits = snapshot.rateLimits.filter(limit => getUsageDisplay(limit.kind, config).shown);
 
-	if (knownLimits.length === 0) return [];
+	if (shownLimits.length === 0) return [];
 
 	const label: RowPart[] = detail.showLabels && config.decorations.usageLabel ? [{ text: usageLabel }] : [];
 
 	// The windows share one group under one label, so a plain space keeps them reading as one element.
-	const windows = knownLimits.flatMap((limit, index) => [
+	const windows = shownLimits.flatMap((limit, index) => [
 		...(index === 0 ? [] : [{ text: wordSeparator }]),
 		...describeRateLimit(limit, config, detail),
 	]);
@@ -232,12 +240,25 @@ function describeRateLimits({ snapshot, config }: RowInput, detail: RowDetail): 
 
 }
 
+function getUsageDisplay(kind: string, { visibility, decorations }: StatusBarConfig): UsageDisplay {
+
+	switch (kind) {
+		case limitKinds.fiveHour:
+			return { shown: visibility.fiveHourUsage, bar: decorations.fiveHourUsageBar };
+		case limitKinds.sevenDay:
+			return { shown: visibility.sevenDayUsage, bar: decorations.sevenDayUsageBar };
+		default:
+			return { shown: false, bar: false };
+	}
+
+}
+
 function describeRateLimit(limit: StatusBarRateLimit, config: StatusBarConfig, detail: RowDetail): RowPart[] {
 
 	const color = getThresholdColor(limit.percentUsed, config.usageThresholds, config.colors);
 	const parts: RowPart[] = [{ text: `${limitLabels[limit.kind]} ` }];
 
-	if (detail.showBars && config.decorations.usageBars) {
+	if (detail.showBars && getUsageDisplay(limit.kind, config).bar) {
 
 		parts.push({ text: `${formatProgressBar(limit.percentUsed, usageBarWidth)} `, color });
 

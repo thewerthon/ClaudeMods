@@ -8,7 +8,8 @@ export interface StatusBarVisibility {
 	model: boolean;
 	effort: boolean;
 	context: boolean;
-	usage: boolean;
+	fiveHourUsage: boolean;
+	sevenDayUsage: boolean;
 
 }
 
@@ -16,7 +17,8 @@ export interface StatusBarVisibility {
 export interface StatusBarDecorations {
 
 	contextBar: boolean;
-	usageBars: boolean;
+	fiveHourUsageBar: boolean;
+	sevenDayUsageBar: boolean;
 	contextLabel: boolean;
 	usageLabel: boolean;
 
@@ -71,11 +73,13 @@ export function readConfig(options: PluginOptions): StatusBarConfig {
 			model: readFlag(options, "showModel", true),
 			effort: readFlag(options, "showEffort", true),
 			context: readFlag(options, "showContext", true),
-			usage: readFlag(options, "showUsage", true),
+			fiveHourUsage: readFlag(options, "showFiveHourUsage", true),
+			sevenDayUsage: readFlag(options, "showSevenDayUsage", true),
 		},
 		decorations: {
 			contextBar: readFlag(options, "showContextBar", false),
-			usageBars: readFlag(options, "showUsageBars", false),
+			fiveHourUsageBar: readFlag(options, "showFiveHourUsageBar", false),
+			sevenDayUsageBar: readFlag(options, "showSevenDayUsageBar", false),
 			contextLabel: readFlag(options, "showContextLabel", false),
 			usageLabel: readFlag(options, "showUsageLabel", false),
 		},

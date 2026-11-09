@@ -8,8 +8,22 @@ test("missing options fall back to visible elements, no decorations and the defa
 
 	const config = readConfig({});
 
-	expect(config.visibility).toEqual({ folder: true, branch: true, model: true, effort: true, context: true, usage: true });
-	expect(config.decorations).toEqual({ contextBar: false, usageBars: false, contextLabel: false, usageLabel: false });
+	expect(config.visibility).toEqual({
+		folder: true,
+		branch: true,
+		model: true,
+		effort: true,
+		context: true,
+		fiveHourUsage: true,
+		sevenDayUsage: true,
+	});
+	expect(config.decorations).toEqual({
+		contextBar: false,
+		fiveHourUsageBar: false,
+		sevenDayUsageBar: false,
+		contextLabel: false,
+		usageLabel: false,
+	});
 	expect(config.contextThresholds).toEqual({ warning: 50, critical: 80 });
 
 });

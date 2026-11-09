@@ -5,7 +5,7 @@ export const limitKinds = {
 	spendLimit: "spend_limit",
 } as const;
 
-/** The short labels the status row shows; a window without one is left out of the row. */
+/** The short labels the status row shows each window with. */
 export const limitLabels: Readonly<Record<string, string>> = {
 	[limitKinds.fiveHour]: "5h",
 	[limitKinds.sevenDay]: "7d",

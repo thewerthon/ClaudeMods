@@ -8,7 +8,13 @@ import type { StatusBarSnapshot } from "../types";
 
 const minimumGap = 2;
 const unlimitedWidth = Number.POSITIVE_INFINITY;
-const allDecorations = { showContextBar: true, showUsageBars: true, showContextLabel: true, showUsageLabel: true };
+const allDecorations = {
+	showContextBar: true,
+	showFiveHourUsageBar: true,
+	showSevenDayUsageBar: true,
+	showContextLabel: true,
+	showUsageLabel: true,
+};
 
 const snapshot: StatusBarSnapshot = {
 	directory: "C:\\Users\\Foo\\Bar\\Baz\\Qux\\Quux",
@@ -159,10 +165,40 @@ test("each label shows on its own", async () => {
 
 test("hidden elements leave no stray separators", async () => {
 
-	const text = layoutText({ showModel: false, showEffort: false, showUsage: false });
+	const text = layoutText({ showModel: false, showEffort: false, showFiveHourUsage: false, showSevenDayUsage: false });
 
 	expect(text).toMatch(/:main {2}37%/);
 	expect(text).not.toContain("·");
+
+});
+
+test("each usage window can be hidden on its own", async () => {
+
+	const withoutFiveHour = layoutText({ showFiveHourUsage: false, showUsageLabel: true });
+	const withoutSevenDay = layoutText({ showSevenDayUsage: false, showUsageLabel: true });
+
+	expect(withoutFiveHour).toMatch(/· Usage 7d 10%/);
+	expect(withoutFiveHour).not.toContain("5h");
+	expect(withoutSevenDay).toMatch(/· Usage 5h 6% \([^)]+\)$/);
+	expect(withoutSevenDay).not.toContain("7d");
+
+});
+
+test("the usage windows read as one element under the label", async () => {
+
+	const text = layoutText({ showUsageLabel: true });
+
+	expect(text).toMatch(/· Usage 5h 6% \([^)]+\) 7d 10% \([^)]+\)$/);
+
+});
+
+test("each usage bar shows on its own", async () => {
+
+	const fiveHourOnly = layoutText({ showFiveHourUsageBar: true });
+	const sevenDayOnly = layoutText({ showSevenDayUsageBar: true });
+
+	expect(fiveHourOnly).toMatch(/5h ░░░░░ 6% \([^)]+\) 7d 10%/);
+	expect(sevenDayOnly).toMatch(/5h 6% \([^)]+\) 7d █░░░░ 10%/);
 
 });
 

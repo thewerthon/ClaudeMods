@@ -40,10 +40,16 @@
 			"description": "Show how much of the context window is used.",
 			"default": true
 		},
-		"showUsage": {
+		"showFiveHourUsage": {
 			"type": "boolean",
-			"title": "Show usage limits",
-			"description": "Show the 5-hour and 7-day usage limit windows.",
+			"title": "Show 5-hour usage",
+			"description": "Show the 5-hour usage limit window.",
+			"default": true
+		},
+		"showSevenDayUsage": {
+			"type": "boolean",
+			"title": "Show 7-day usage",
+			"description": "Show the 7-day usage limit window.",
 			"default": true
 		},
 		"showContextBar": {
@@ -52,10 +58,16 @@
 			"description": "Draw a bar next to the context percentage in the row.",
 			"default": false
 		},
-		"showUsageBars": {
+		"showFiveHourUsageBar": {
 			"type": "boolean",
-			"title": "Show usage bars",
-			"description": "Draw a bar next to each usage limit percentage in the row.",
+			"title": "Show 5-hour usage bar",
+			"description": "Draw a bar next to the 5-hour usage limit percentage in the row.",
+			"default": false
+		},
+		"showSevenDayUsageBar": {
+			"type": "boolean",
+			"title": "Show 7-day usage bar",
+			"description": "Draw a bar next to the 7-day usage limit percentage in the row.",
 			"default": false
 		},
 		"showContextLabel": {
