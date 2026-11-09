@@ -69,9 +69,9 @@ const segmentSeparator = " · ";
 const wordSeparator = " ";
 const branchSeparator = ":";
 const ellipsis = "…";
-const modelLabel = "Model ";
-const contextLabel = "Context ";
-const usageLabel = "Usage ";
+const modelLabel = "Model: ";
+const contextLabel = "Context: ";
+const usageLabel = "Usage: ";
 
 // Tried in order until the row fits: the least useful details go first, and the path is elided only as a last resort.
 // Bars and labels are only ever shown when the configuration asks for them.

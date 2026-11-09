@@ -139,9 +139,9 @@ test("bars and labels show only when asked for", async () => {
 
 	const text = layoutText(allDecorations);
 
-	expect(text).toContain("Model Foo 1.2 high");
-	expect(text).toContain("Context ████░░░░░░ 37%");
-	expect(text).toContain("Usage 5h ░░░░░ 6%");
+	expect(text).toContain("Model: Foo 1.2 high");
+	expect(text).toContain("Context: ████░░░░░░ 37%");
+	expect(text).toContain("Usage: 5h ░░░░░ 6%");
 
 });
 
@@ -160,7 +160,7 @@ test("each label shows on its own", async () => {
 
 	const text = layoutText({ showUsageLabel: true });
 
-	expect(text).toContain("Usage 5h");
+	expect(text).toContain("Usage: 5h");
 	expect(text).not.toContain("Context");
 	expect(text).not.toContain("Model");
 
@@ -180,9 +180,9 @@ test("each usage window can be hidden on its own", async () => {
 	const withoutFiveHour = layoutText({ showFiveHourUsage: false, showUsageLabel: true });
 	const withoutSevenDay = layoutText({ showSevenDayUsage: false, showUsageLabel: true });
 
-	expect(withoutFiveHour).toMatch(/· Usage 7d 10%/);
+	expect(withoutFiveHour).toMatch(/· Usage: 7d 10%/);
 	expect(withoutFiveHour).not.toContain("5h");
-	expect(withoutSevenDay).toMatch(/· Usage 5h 6% \([^)]+\)$/);
+	expect(withoutSevenDay).toMatch(/· Usage: 5h 6% \([^)]+\)$/);
 	expect(withoutSevenDay).not.toContain("7d");
 
 });
@@ -191,7 +191,7 @@ test("the usage windows read as one element under the label", async () => {
 
 	const text = layoutText({ showUsageLabel: true });
 
-	expect(text).toMatch(/· Usage 5h 6% \([^)]+\) 7d 10% \([^)]+\)$/);
+	expect(text).toMatch(/· Usage: 5h 6% \([^)]+\) 7d 10% \([^)]+\)$/);
 
 });
 
@@ -199,7 +199,7 @@ test("the model label stays in the model's pressable group", async () => {
 
 	const modelGroup = layout({ showModelLabel: true }).right.find(group => group.action === "model");
 
-	expect(modelGroup?.parts.map(part => part.text).join("")).toBe("Model Foo 1.2");
+	expect(modelGroup?.parts.map(part => part.text).join("")).toBe("Model: Foo 1.2");
 
 });
 

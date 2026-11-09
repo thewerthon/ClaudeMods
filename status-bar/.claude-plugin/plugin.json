@@ -73,19 +73,19 @@
 		"showModelLabel": {
 			"type": "boolean",
 			"title": "Show model label",
-			"description": "Lead the model name with the word Model.",
+			"description": "Lead the model name with the label Model:.",
 			"default": false
 		},
 		"showContextLabel": {
 			"type": "boolean",
 			"title": "Show context label",
-			"description": "Lead the context figure with the word Context.",
+			"description": "Lead the context figure with the label Context:.",
 			"default": false
 		},
 		"showUsageLabel": {
 			"type": "boolean",
 			"title": "Show usage label",
-			"description": "Lead the usage limit figures with the word Usage.",
+			"description": "Lead the usage limit figures with the label Usage:.",
 			"default": false
 		},
 		"contextWarningPercent": {
