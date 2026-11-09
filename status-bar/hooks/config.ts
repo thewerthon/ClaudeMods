@@ -19,6 +19,7 @@ export interface StatusBarDecorations {
 	contextBar: boolean;
 	fiveHourUsageBar: boolean;
 	sevenDayUsageBar: boolean;
+	modelLabel: boolean;
 	contextLabel: boolean;
 	usageLabel: boolean;
 
@@ -80,6 +81,7 @@ export function readConfig(options: PluginOptions): StatusBarConfig {
 			contextBar: readFlag(options, "showContextBar", false),
 			fiveHourUsageBar: readFlag(options, "showFiveHourUsageBar", false),
 			sevenDayUsageBar: readFlag(options, "showSevenDayUsageBar", false),
+			modelLabel: readFlag(options, "showModelLabel", false),
 			contextLabel: readFlag(options, "showContextLabel", false),
 			usageLabel: readFlag(options, "showUsageLabel", false),
 		},

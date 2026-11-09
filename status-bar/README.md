@@ -38,7 +38,7 @@ Options are set when installing and later under `/config`. Colors take a hex val
 | ------ | ------- | ----------- |
 | `showFolder`, `showBranch`, `showModel`, `showEffort`, `showContext`, `showFiveHourUsage`, `showSevenDayUsage` | `true` | Show each element of the row. |
 | `showContextBar`, `showFiveHourUsageBar`, `showSevenDayUsageBar` | `false` | Draw a bar next to the context and each usage limit percentage. |
-| `showContextLabel`, `showUsageLabel` | `false` | Lead the context and the usage figures with `Context` and `Usage`. |
+| `showModelLabel`, `showContextLabel`, `showUsageLabel` | `false` | Lead the model, the context and the usage figures with `Model`, `Context` and `Usage`. |
 | `contextWarningPercent`, `contextCriticalPercent` | `50`, `80` | Context levels at which the warning and critical colors apply. |
 | `usageWarningPercent`, `usageCriticalPercent` | `50`, `80` | Usage limit levels at which the warning and critical colors apply. |
 | `pathColor`, `branchColor`, `modelColor`, `effortColor`, `mutedColor` | `blue`, `yellow`, `cyan`, `magenta`, `gray` | Colors of the folder, branch, model, effort and secondary details. |

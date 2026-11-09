@@ -21,6 +21,7 @@ test("missing options fall back to visible elements, no decorations and the defa
 		contextBar: false,
 		fiveHourUsageBar: false,
 		sevenDayUsageBar: false,
+		modelLabel: false,
 		contextLabel: false,
 		usageLabel: false,
 	});

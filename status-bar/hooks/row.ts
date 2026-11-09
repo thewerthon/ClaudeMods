@@ -69,6 +69,7 @@ const segmentSeparator = " · ";
 const wordSeparator = " ";
 const branchSeparator = ":";
 const ellipsis = "…";
+const modelLabel = "Model ";
 const contextLabel = "Context ";
 const usageLabel = "Usage ";
 
@@ -140,7 +141,7 @@ function describeRow(input: RowInput, detail: RowDetail): RowLayout {
 
 	const { visibility } = input.config;
 	const segments = [
-		visibility.model || visibility.effort ? describeModel(input) : [],
+		visibility.model || visibility.effort ? describeModel(input, detail) : [],
 		visibility.context ? describeContext(input, detail) : [],
 		describeRateLimits(input, detail),
 	].filter(segment => segment.length > 0);
@@ -176,11 +177,12 @@ function describeLocation({ snapshot, config }: RowInput, detail: RowDetail): Ro
 
 }
 
-function describeModel({ snapshot, effort: observedEffort, config }: RowInput): RowGroup[] {
+function describeModel({ snapshot, effort: observedEffort, config }: RowInput, detail: RowDetail): RowGroup[] {
 
 	const effort = config.visibility.effort ? resolveEffort(observedEffort, snapshot) : null;
+	const label: RowPart[] = detail.showLabels && config.decorations.modelLabel ? [{ text: modelLabel }] : [];
 	const modelPart: RowPart = { text: formatModelName(snapshot.model), color: config.colors.model, bold: true };
-	const groups: RowGroup[] = config.visibility.model ? [{ action: "model", parts: [modelPart] }] : [];
+	const groups: RowGroup[] = config.visibility.model ? [{ action: "model", parts: [...label, modelPart] }] : [];
 
 	if (effort) {
 
