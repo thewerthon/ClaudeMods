@@ -63,7 +63,7 @@ test("a wide row keeps every detail", async () => {
 	expect(text).toContain("~\\Bar\\Baz\\Qux\\Quux:main");
 	expect(text).toContain("(367k/1M)");
 	expect(text).toContain("Foo 1.2 high");
-	expect(text).toMatch(/5h 6% \([^)]+\) · 7d 10%/);
+	expect(text).toMatch(/5h 6% \([^)]+\) 7d 10%/);
 	expect(text).not.toContain("█");
 
 });

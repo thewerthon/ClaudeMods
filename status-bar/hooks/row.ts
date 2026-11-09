@@ -58,6 +58,7 @@ const minimumPathLength = 8;
 const contextBarWidth = 10;
 const usageBarWidth = 5;
 const segmentSeparator = " · ";
+const wordSeparator = " ";
 const branchSeparator = ":";
 const ellipsis = "…";
 const contextLabel = "Context ";
@@ -175,7 +176,7 @@ function describeModel({ snapshot, effort: observedEffort, config }: RowInput): 
 
 	if (effort) {
 
-		if (groups.length > 0) groups.push({ parts: [{ text: " " }] });
+		if (groups.length > 0) groups.push({ parts: [{ text: wordSeparator }] });
 		groups.push({ action: "effort", parts: [{ text: effort, color: config.colors.effort }] });
 
 	}
@@ -220,8 +221,10 @@ function describeRateLimits({ snapshot, config }: RowInput, detail: RowDetail): 
 	if (knownLimits.length === 0) return [];
 
 	const label: RowPart[] = detail.showLabels && config.decorations.usageLabel ? [{ text: usageLabel }] : [];
+
+	// The windows share one group under one label, so a plain space keeps them reading as one element.
 	const windows = knownLimits.flatMap((limit, index) => [
-		...(index === 0 ? [] : [separatorPart()]),
+		...(index === 0 ? [] : [{ text: wordSeparator }]),
 		...describeRateLimit(limit, config, detail),
 	]);
 
